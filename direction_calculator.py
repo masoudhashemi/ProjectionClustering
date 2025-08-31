@@ -29,29 +29,31 @@ class DirectionCalculator:
         return centroid / norm if norm > 0 else centroid
 
     @staticmethod
-    def compute_semantic_direction(positive_texts, negative_texts, embeddings_dict):
+    def compute_perspective_direction(perspective_texts, embeddings_dict, reference_texts=None):
         """
-        Compute a semantic direction that points from the negative examples to the positive examples.
+        Compute a direction representing a given perspective.
+
+        - If `reference_texts` is provided and non-empty: return the normalized vector
+          from the reference centroid to the perspective centroid.
+        - If no `reference_texts`: return the normalized centroid of the perspective texts
+          (suitable for cosine-similarity style projection).
         """
-        if not positive_texts or not negative_texts:
+        if not perspective_texts:
             return None
 
-        # Normalize embeddings first.
         norm_embeddings = DirectionCalculator.normalize_embeddings(embeddings_dict)
 
-        # Compute centroids for positive and negative examples.
-        positive_centroid = DirectionCalculator.compute_group_centroid(positive_texts, norm_embeddings)
-        negative_centroid = DirectionCalculator.compute_group_centroid(negative_texts, norm_embeddings)
-
-        if positive_centroid is None or negative_centroid is None:
+        perspective_centroid = DirectionCalculator.compute_group_centroid(perspective_texts, norm_embeddings)
+        if perspective_centroid is None:
             return None
 
-        # Compute the direction from negative centroid to positive centroid.
-        direction = positive_centroid - negative_centroid
+        if reference_texts:
+            reference_centroid = DirectionCalculator.compute_group_centroid(reference_texts, norm_embeddings)
+            if reference_centroid is None:
+                return None
+            direction = perspective_centroid - reference_centroid
+            norm = np.linalg.norm(direction)
+            return direction / norm if norm > 0 else direction
 
-        # Normalize the computed direction.
-        norm = np.linalg.norm(direction)
-        if norm > 0:
-            direction = direction / norm
-
-        return direction
+        # No reference: treat the (normalized) perspective centroid itself as the direction
+        return perspective_centroid
