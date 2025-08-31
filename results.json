@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "perspective": "expenses",
+    "reference_count": 1,
+    "centroid_method": "trimmed",
+    "trim_proportion": 0.1,
+    "huber_delta": 1.0,
+    "ref_weight": 0.8,
+    "cluster_mode": "kmeans",
+    "kmeans_k": 4
+  },
+  "rows": [
+    {
+      "index": 0,
+      "text": "Guide to planning a small project.",
+      "score": 0.04239066690206528,
+      "cluster": 0
+    },
+    {
+      "index": 1,
+      "text": "Steps for brewing a cup of coffee.",
+      "score": -0.0017154756933450699,
+      "cluster": 3
+    },
+    {
+      "index": 2,
+      "text": "Short tutorial on organizing digital files.",
+      "score": -0.13759629428386688,
+      "cluster": 2
+    },
+    {
+      "index": 3,
+      "text": "Overview of budgeting for monthly expenses.",
+      "score": 0.5429293513298035,
+      "cluster": 1
+    },
+    {
+      "index": 4,
+      "text": "Tips for writing clear emails at work.",
+      "score": 0.05934608727693558,
+      "cluster": 0
+    },
+    {
+      "index": 5,
+      "text": "Checklist for preparing a weekend trip.",
+      "score": 0.14079588651657104,
+      "cluster": 0
+    },
+    {
+      "index": 6,
+      "text": "Basics of stretching for daily exercise.",
+      "score": -0.018792379647493362,
+      "cluster": 3
+    },
+    {
+      "index": 7,
+      "text": "Notes from a team meeting about timelines.",
+      "score": -0.06271100044250488,
+      "cluster": 3
+    },
+    {
+      "index": 8,
+      "text": "Summary of a book chapter on creativity.",
+      "score": 0.02564939484000206,
+      "cluster": 0
+    },
+    {
+      "index": 9,
+      "text": "Simple recipe for a vegetable stir-fry.",
+      "score": -0.03489679843187332,
+      "cluster": 3
+    },
+    {
+      "index": 10,
+      "text": "Advice on keeping indoor plants healthy.",
+      "score": 0.01794467680156231,
+      "cluster": 0
+    },
+    {
+      "index": 11,
+      "text": "Introduction to sorting data in spreadsheets.",
+      "score": -0.21646258234977722,
+      "cluster": 2
+    }
+  ]
+}

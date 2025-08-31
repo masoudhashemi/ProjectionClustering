@@ -45,6 +45,9 @@ You can run the demo (uses a small built-in list of texts) or provide your own c
   - Limit console output to top-K: `--top-k 20`
   - Switch embedding model: `--model all-mpnet-base-v2`
   - Cluster with KMeans: `--cluster-mode kmeans --kmeans-k 3`
+  - Direction quality: `--centroid-method {mean,trimmed,huber}` with `--trim-proportion 0.1` or `--huber-delta 1.0`
+  - Reference weighting: `--ref-weight 1.0` scales the reference centroid in `P - w*R`
+  - Save outputs: `--out-csv results.csv` and/or `--out-json results.json`
 
 Notes:
 
@@ -62,6 +65,12 @@ Notes:
 - `--top-k INT`: Number of rows to print for top aligned/opposed (default: `20`).
 - `--cluster-mode {none,kmeans}`: With perspective: cluster 1D projection scores. Without perspective: cluster normalized embeddings (cosine-like). Default: `none`.
 - `--kmeans-k INT`: Number of clusters for KMeans on scores (default: `3`).
+- `--centroid-method {mean,trimmed,huber}`: Estimator for centroids of perspective/reference sets.
+- `--trim-proportion FLOAT`: Trim proportion per side used in trimmed centroid (default: `0.1`).
+- `--huber-delta FLOAT`: Huber delta for robust centroid (default: `1.0`).
+- `--ref-weight FLOAT`: Scale reference centroid: direction = P - ref_weight * R (default: `1.0`).
+- `--out-csv PATH`: Save per-text index, text, score (if any), and cluster label (if any).
+- `--out-json PATH`: Save results and metadata to JSON.
 
 ## Examples
 
